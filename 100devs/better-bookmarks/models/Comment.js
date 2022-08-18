@@ -15,6 +15,9 @@ const CommentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Post",
   },
+  hasVoted: {
+    type: Array,
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
