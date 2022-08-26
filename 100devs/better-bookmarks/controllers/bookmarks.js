@@ -74,7 +74,7 @@ module.exports = {
       const user = req.user.id
       const bookmark = await Bookmark.findById(req.params.id);
       const hasVotedArr = bookmark.hasVoted
-    
+  
       // Update the like counter by one if the user hasn't voted yet; 
       // otherwise remove their like
       if (hasVotedArr.includes(user)) {
@@ -95,7 +95,38 @@ module.exports = {
         );
       }
       // return the user to the same post page
-      res.redirect(`/bookmark/${req.params.id}`);
+      // res.redirect(`/bookmark/${req.params.id}`);
+      res.redirect('back');
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  favouriteBookmark: async (req, res) => {
+    try {
+      const user = req.user.id
+      const bookmark = await Bookmark.findById(req.params.id);
+      const usersFavouritesArr = bookmark.usersFavourites
+ 
+      // Update the like counter by one if the user hasn't voted yet; 
+      // otherwise remove their like
+      if (usersFavouritesArr.includes(user)) {
+        await Bookmark.findOneAndUpdate(
+          { _id: req.params.id },
+          {
+            $pull: { usersFavourites: user },
+          }
+        );
+      } else {
+        await Bookmark.findOneAndUpdate(
+          { _id: req.params.id },
+          {
+            $push: { usersFavourites: user },
+          }
+        );
+      }
+      // return the user to the same post page
+      // res.redirect(`/bookmark/${req.params.id}`);
+      res.redirect('back');
     } catch (err) {
       console.log(err);
     }

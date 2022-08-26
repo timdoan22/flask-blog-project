@@ -23,6 +23,9 @@ const BookmarkSchema = new mongoose.Schema({
   hasVoted: {
     type: Array,
   },
+  usersFavourites: {
+    type: Array,
+  },
   likes: {
     type: Number,
     required: true,

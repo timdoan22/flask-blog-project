@@ -12,6 +12,8 @@ router.post("/createBookmark", upload.single("file"), bookmarksController.create
 
 router.put("/likeBookmark/:id", bookmarksController.likeBookmark);
 
+router.put("/favouriteBookmark/:id", bookmarksController.favouriteBookmark);
+
 router.delete("/deleteBookmark/:id", bookmarksController.deleteBookmark);
 
 module.exports = router;

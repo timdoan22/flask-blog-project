@@ -12,6 +12,24 @@
             <div>
               <%= bookmarks[i].likes%>
             </div>
+            <div>
+              <form
+              class="col-1"
+              action="/bookmark/likeBookmark/<%= bookmarks[i]._id %>?_method=PUT"
+              method="POST"
+              >
+                <button class="btn btn-primary fa fa-heart heart-button" type="submit"></button>
+              </form>
+            </div>
+            <div>
+              <form
+              class="col-1"
+              action="/bookmark/favouriteBookmark/<%= bookmarks[i]._id %>?_method=PUT"
+              method="POST"
+              >
+                <button class="btn btn-primary fa fa-heart heart-button" type="submit"></button>
+              </form>
+            </div>
             <div class="p-5">
                 <a href="<%= bookmarks[i].link%>">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-navy-900 dark:text-white"><%= bookmarks[i].title%></h5>
