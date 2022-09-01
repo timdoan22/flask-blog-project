@@ -131,6 +131,15 @@ module.exports = {
       console.log(err);
     }
   },
+  getFavourites: async (req, res) => {
+    try {
+      const favouriteBookmarks = await Bookmark.find({ usersFavourites: req.user.id });
+ 
+      res.render("favourites.ejs", { bookmarks: favouriteBookmarks, user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   deleteBookmark: async (req, res) => {
     try {
       // Find the specific post by id
