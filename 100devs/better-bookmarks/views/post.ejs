@@ -1,0 +1,91 @@
+<%- include('partials/header') -%>
+<%- include('partials/navbar') -%>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-6">
+      <div class="card text-center">
+        <div class="card-header">
+          <a href="<%= bookmark.link %>"><h1 id="post-title"><%= bookmark.title %></h1></a>
+        </div>
+        <div class="card-body">
+          <img class="img-fluid" src="<%= bookmark.image%>" />
+          <br>
+          <p class="card-text"><%= bookmark.description %></p>
+          <br>
+          <a href="<%= bookmark.link %>" class="btn btn-primary">Visit Site</a>
+        </div>
+        <div class="card-footer text-muted">
+          <div class="row justify-content-between">
+            <!-- form to submit a update/put request on the post likes -->
+            <form
+              class="col-1"
+              action="/bookmark/likeBookmark/<%= bookmark._id %>?_method=PUT"
+              method="POST"
+            >
+              <button class="btn btn-primary fa fa-heart heart-button" type="submit"></button>
+            </form>
+            <!-- display the post likes data -->
+            <h3 class="col-3">Likes: <%= bookmark.likes %></h3>
+            <!-- display the delete button if the logged in user matches the user id belonging to their post -->
+            <%if(bookmark.user == user.id){ %>
+            <form
+              action="/bookmark/deleteBookmark/<%= bookmark._id %>?_method=DELETE"
+              method="POST"
+              class="col-3"
+            >
+              <button class="btn btn-primary fa fa-trash trash-button" type="submit"></button>
+            </form>
+            <%}%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-5 col-8">
+      <!-- comment form -->
+      <form action="/comment/createComment/<%=bookmark._id%>" method="POST">
+        <div class="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+            <div class="py-2 px-4 bg-white rounded-t-lg dark:bg-gray-800">
+                <label for="comment" class="sr-only">Your comment</label>
+                <textarea id="comment" name="comment" rows="4" class="px-0 w-full text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write a comment..." required></textarea>
+            </div>
+            <div class="flex justify-between items-center py-2 px-3 border-t dark:border-gray-600">
+                <button id="submit-comment" type="submit" class="btn btn-primary">
+                    Post comment
+                </button>
+            </div>
+        </div>
+     </form>
+    </div>
+    <ul class="comment-box">
+      <!-- loop through and display all the comments pertaining to the post -->
+      <% for(var i=0; i<comments.length; i++) {%>
+        <li class="col-6 justify-content-between mt-5">
+          <div class="card col-14">
+            <div class="card-body">
+              <span class="username"><%= comments[i].userName%></span> says: <%= comments[i].comment%>
+            </div>
+            <div class="comment-interact">
+              <form
+              action="/comment/likeComment/<%= bookmark._id %>/<%= 
+              comments[i]._id %>?_method=PUT" method="POST"
+              >
+                <button class="btn btn-primary fa fa-heart heart-button" type="submit"></button>
+              </form>
+              <h3 class="col-8"><%= comments[i].likes %></h3>
+              <%if(comments[i].user == user.id){%>
+                <form
+                  action="/comment/deleteComment/<%= bookmark._id %>/<%= 
+                  comments[i]._id %>?_method=DELETE" method="POST"
+                >
+                  <button class="btn btn-outline-danger delete-button" type="submit">DELETE</button>
+                </form>
+              <%}%>
+            </div>
+          </div>
+        </li>
+      <% } %>
+    </ul>
+  </div>
+</div>
+<!-- import footer partials -->
+<%- include('partials/footer') -%>

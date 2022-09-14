@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#dashboard-nav {
+    font-size: large;
+    font-weight: bolder;
+}
+
+#dashboard-nav:hover {
+    color: #2155CD;
+}
+
+#post-title {
+    font-size: x-large;
+    font-weight: 800;
+}
+
+#submit-comment {
+    background-color: #2155CD;
+    font-size: small;
+}
+
+#submit-comment:hover {
+    background-color: #000000;
+    font-size: small;
+}
+
+.comment-box {
+    margin: -2% 0 4% 48%;
+}
+
+.comment-interact * {
+    display: inline-block;
+    margin: 0 0 1% 2%;
+}
+
+.delete-button {
+    font-size: x-small;
+    font-weight: 600;
+    color: white;
+    background-color: #F96666;
+    margin-left: 40%;
+}
+
+.heart-button, .trash-button {
+    background-color: #2155CD;
+}
+
+.heart-button:hover, .trash-button:hover {
+    background-color: #000000;
+}
+
+.submit-button {
+    width: 96%;
+    background-color: #2155CD;
+}
+
+.submit-button:hover{
+    background-color: #000000;
+}
+
+.username {
+    font-weight: bold;
+    font-size: large;
+}

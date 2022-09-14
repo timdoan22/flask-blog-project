@@ -1,0 +1,50 @@
+<%- include('partials/header') -%>
+<%- include('partials/navbar') -%>
+<div class="container">
+  <div class="row mt-5">
+      <div class="col-6">
+          <div class="mt-5">
+            <h2>Add a bookmark</h2>
+            <form action="/bookmark/createBookmark" enctype="multipart/form-data" method="POST">
+              <div class="mb-3">
+                  <label for="title" class="form-label">Title</label>
+                  <input type="text" class="form-control" id="title" name="title">
+              </div>
+              <div class="mb-3">
+                <label for="link" class="form-label">URL</label>
+                <input type="text" class="form-control" id="link" name="link">
+              </div>
+              <div class="mb-3">
+                <label for="caption" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="imgUpload" class="form-label">Image</label>
+                <input type="file" class="form-control" id="imageUpload" name="file">
+              </div>
+              <div class="col-4">
+                <button type="submit" class="btn btn-primary submit-button" value="Upload">Submit</button>
+              </div>
+            </form>
+          </div>
+      </div>
+      <div class="col-6">
+        <ul class="row list-unstyled">
+        <!-- display all the posts belonging to the user -->
+        <% for(var i=0; i<bookmarks.length; i++) {%>
+          <li class="col-6 justify-content-between mt-5">
+            <a href="<%= bookmarks[i].link%>"><h3><%= bookmarks[i].title%></h3></a>
+            <a href="/bookmark/<%= bookmarks[i]._id%>">
+              <img class="img-fluid max-w-xs" src="<%= bookmarks[i].image%>">
+            </a>
+          </li>
+        <% } %>
+        </ul>
+        <!-- <div class="row justify-content-center mt-5">
+          <a class="btn btn-primary" href="/feed">Return to Feed</a>
+        </div>   -->
+      </div>  
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') -%>
