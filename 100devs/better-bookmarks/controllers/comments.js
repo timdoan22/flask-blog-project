@@ -22,7 +22,7 @@ module.exports = {
       const user = req.user.id
       const comment = await Comment.findById(req.params.commentid);
       const hasVotedArr = comment.hasVoted
-   
+      
       // Update the like counter by one if the user hasn't voted yet; 
       // otherwise remove their like
       if (hasVotedArr.includes(user)) {
