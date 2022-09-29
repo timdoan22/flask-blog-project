@@ -65,6 +65,41 @@
     font-size: large;
 }
 
+.author {
+    text-align: center;
+    margin-bottom: 6%;
+}
+
+.button-links {
+    display: flex;
+    margin: -7% 0 4% -7%;
+}
+
+.container-feed {
+    margin-bottom: 10%;
+}
+
+.favourites-btn {
+    margin: -13% 0% 10% 95.4%;
+}
+
+.feed-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-left: 12%;
+}
+
+.liked-heart {
+    background-color: #000000;
+}
+
+.likes-text {
+    margin-left: 8%;
+    font-size: 12px;
+    font-weight: 600;
+}
+
 .profile-cards {
     margin: 4% 0 0 16%;
     display: flex;
@@ -91,4 +126,18 @@
 
 .main-profile-link {
     text-decoration: underline;
+}
+
+@media screen and (max-width: 1536px) {
+    .feed-cards-child {
+       flex-basis: 38%;
+       margin-left: 2%;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 200px) {
+    .feed-cards-child {
+       flex-basis: 100%;
+       margin-left: 10%;
+    }
 }

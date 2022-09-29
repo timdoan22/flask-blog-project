@@ -1,30 +1,28 @@
 <%- include('partials/header') -%>
 <%- include('partials/navbar') -%>
 <div class="container">
-      <div class="col-6 mt-10 profile-links">
+    <div class="col-6 mt-10 profile-links">
         <a href="/profile"><h2>My Posts</h2></a>
         <span class="profile-span">|</span>
         <h2 class="main-profile-link">Favourites</h2>
         <span class="profile-span">|</span>
         <a href="/new_post"><h2>New Bookmark</h2></a>
-      </div>
-      <div class="col-6">
-        <ul class="row list-unstyled">
-        <!-- display all the posts belonging to the user -->
-        <% for(var i=0; i<bookmarks.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
-            <a href="<%= bookmarks[i].link%>"><h3><%= bookmarks[i].title%></h3></a>
-            <a href="/bookmark/<%= bookmarks[i]._id%>">
-              <img class="img-fluid max-w-xs" src="<%= bookmarks[i].image%>">
-            </a>
-          </li>
-        <% } %>
-        </ul>
-        <!-- <div class="row justify-content-center mt-5">
-          <a class="btn btn-primary" href="/feed">Return to Feed</a>
-        </div>   -->
-      </div>  
     </div>
+
+  <!-- display all the posts belonging to the user -->
+  <div class="col-12 profile-cards">
+    <% for(var i=0; i<bookmarks.length; i++) {%>
+        <div class="col-4 mt-10">
+          <div class="max-w-sm rounded overflow-hidden shadow-lg">
+            <a href="/bookmark/<%= bookmarks[i]._id%>"><img class="profile-image" src="<%= bookmarks[i].image%>" alt=""></a>
+            <div class="px-6 py-4">
+              <a href="<%= bookmarks[i].link%>"><div class="font-bold text-xl mb-2 text-center"><%= bookmarks[i].title%></div></a>
+            </div>
+          </div>
+        </div>
+    <% } %>
   </div>
 </div>
+  
 <%- include('partials/footer') -%>
+
