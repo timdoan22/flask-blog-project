@@ -100,6 +100,34 @@
     font-weight: 600;
 }
 
+.post-delete {
+    margin: -4% 0% 0 82%;
+}
+
+.post-image {
+    height: 300px;
+    width: 720px;
+}
+
+.post-likes {
+    margin-right: 38%;
+    
+}
+
+.likes-comment-post {
+    margin-left: -9%;
+    font-size: small;
+}
+
+.likes-text-post {
+    font-size: small;
+    font-weight: 700;
+}
+
+.comment-delete-btn {
+    margin-left: 50%;
+}
+
 .profile-cards {
     margin: 4% 0 0 16%;
     display: flex;
@@ -133,11 +161,53 @@
        flex-basis: 38%;
        margin-left: 2%;
     }
+    .post-delete {
+        margin: -4.8% 0% 0 82%;
+    }
+    .comment-delete-btn {
+        margin-left: 46%;
+    }
 }
 
-@media (max-width: 1024px) and (min-width: 200px) {
-    .feed-cards-child {
-       flex-basis: 100%;
-       margin-left: 10%;
+@media (max-width: 1280px) and (min-width: 1024px) {
+    .post-delete {
+        margin: -6% 0% 0 80%;
+    }
+    .comment-delete-btn {
+        margin-left: 40%;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+    .post-delete {
+        margin: -8.2% 0% 0 76%;
+    }
+    .comment-delete-btn {
+        margin-left: 30%;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 640px) {
+    .post-delete {
+        margin: -10% 0% 0 74%;
+    }
+    .likes-text-post {
+        font-size: 12px;
+    }
+    .comment-delete-btn {
+        margin-left: 22%;
+    }
+}
+
+@media (max-width: 640px) and (min-width: 400px) {
+    .post-delete {
+        margin: -14% 0% 0 72%;
+    }
+    .likes-text-post {
+        font-size: 12px;
+        margin-left: -60%;
+    }
+    .comment-delete-btn {
+        margin-left: 10%;
     }
 }

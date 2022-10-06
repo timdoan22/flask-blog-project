@@ -8,7 +8,7 @@
           <a href="<%= bookmark.link %>"><h1 id="post-title"><%= bookmark.title %></h1></a>
         </div>
         <div class="card-body">
-          <img class="img-fluid" src="<%= bookmark.image%>" />
+          <img class="img-fluid post-image" src="<%= bookmark.image%>" />
           <br>
           <p class="card-text"><%= bookmark.description %></p>
           <br>
@@ -25,16 +25,24 @@
               <button class="btn btn-primary fa fa-heart heart-button" type="submit"></button>
             </form>
             <!-- display the post likes data -->
-            <h3 class="col-3">Likes: <%= bookmark.likes %></h3>
+            <div class="col-3 post-likes">
+              <% if(bookmark.likes < 1){ %>
+                <span class="likes-text-post"></span>
+              <% } else { %>
+                <span class="likes-text-post">Likes: <%= bookmark.likes%></span>
+              <% } %>
+            </div>
             <!-- display the delete button if the logged in user matches the user id belonging to their post -->
             <%if(bookmark.user == user.id){ %>
-            <form
-              action="/bookmark/deleteBookmark/<%= bookmark._id %>?_method=DELETE"
-              method="POST"
-              class="col-3"
-            >
-              <button class="btn btn-primary fa fa-trash trash-button" type="submit"></button>
-            </form>
+              <div class="post-delete">
+                <form
+                  action="/bookmark/deleteBookmark/<%= bookmark._id %>?_method=DELETE"
+                  method="POST"
+                  class="col-3"
+                >
+                  <button class="btn btn-primary fa fa-trash trash-button" type="submit"></button>
+                </form>
+            </div>
             <%}%>
           </div>
         </div>
@@ -71,14 +79,22 @@
               >
                 <button class="btn btn-primary fa fa-heart heart-button" type="submit"></button>
               </form>
-              <h3 class="col-8"><%= comments[i].likes %></h3>
+              <div class="col-3 comment-likes">
+                <% if(comments[i].likes < 1){ %>
+                  <span class="likes-comment-post"></span>
+                <% } else { %>
+                  <span class="likes-comment-post">+<%= comments[i].likes%></span>
+                <% } %>
+              </div>
               <%if(comments[i].user == user.id){%>
-                <form
-                  action="/comment/deleteComment/<%= bookmark._id %>/<%= 
-                  comments[i]._id %>?_method=DELETE" method="POST"
-                >
-                  <button class="btn btn-outline-danger delete-button" type="submit">DELETE</button>
-                </form>
+                <div class="comment-delete-btn">
+                  <form
+                    action="/comment/deleteComment/<%= bookmark._id %>/<%= 
+                    comments[i]._id %>?_method=DELETE" method="POST"
+                  >
+                    <button class="btn btn-outline-danger delete-button" type="submit">DELETE</button>
+                  </form>
+                </div>
               <%}%>
             </div>
           </div>
