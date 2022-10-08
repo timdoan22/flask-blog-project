@@ -18,6 +18,15 @@
             <div class="px-6 py-4">
               <a href="<%= bookmarks[i].link%>"><div class="font-bold text-xl mb-2 text-center"><%= bookmarks[i].title%></div></a>
             </div>
+            <div>
+              <form
+              class="col-1"
+              action="/bookmark/favouriteBookmark/<%= bookmarks[i]._id %>?_method=PUT"
+              method="POST"
+              >
+                <button class="btn btn-primary unbookmark">Unbookmark</button>
+              </form>
+            </div>
           </div>
         </div>
     <% } %>

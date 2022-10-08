@@ -43,12 +43,17 @@
     margin-left: 40%;
 }
 
-.heart-button, .trash-button {
+.heart-button, .trash-button, .fa-bookmark, .unbookmark {
     background-color: #2155CD;
 }
 
-.heart-button:hover, .trash-button:hover {
+.heart-button:hover, .trash-button:hover, .fa-bookmark:hover, .unbookmark:hover {
     background-color: #000000;
+}
+
+.unbookmark {
+    font-size: 12px;
+    font-weight: 700;
 }
 
 .submit-button {
@@ -58,6 +63,11 @@
 
 .submit-button:hover{
     background-color: #000000;
+}
+
+.new-bookmark-title {
+    font-size: 24px;
+    font-weight: 700;
 }
 
 .username {
