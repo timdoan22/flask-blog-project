@@ -179,6 +179,13 @@
     }
 }
 
+@media screen and (max-width: 1080px) {
+    .feed-cards-child {
+       flex-basis: 100%;
+       margin-left: 12%;
+    }
+}
+
 @media (max-width: 1280px) and (min-width: 1024px) {
     .post-delete {
         margin: -6% 0% 0 80%;
@@ -207,6 +214,9 @@
     .comment-delete-btn {
         margin-left: 22%;
     }
+    .feed-cards-child {
+        margin-left: 4%;
+     }
 }
 
 @media (max-width: 640px) and (min-width: 400px) {
@@ -220,4 +230,7 @@
     .comment-delete-btn {
         margin-left: 10%;
     }
+    .feed-cards-child {
+        margin-left: -2%;
+     }
 }
